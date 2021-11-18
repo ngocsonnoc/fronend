@@ -33,7 +33,7 @@ class App extends Component {
   componentDidMount() {
     axios({
       method: 'GET',
-      url: 'http://localhost:3456/api/',
+      url: process.env.REACT_APP_BASE_URL,
       data: null
     }).then(res => {
       this.setState({ courses: [...res.data] })
@@ -98,7 +98,7 @@ class App extends Component {
     var updateCourses = courses.filter((course, index) => {
       if (course.id === value.id) {
         course.last_name = value.state.courseName
-        course.username=value.state.username
+        course.username = value.state.username
         course.status = value.state.status
       }
       return course
